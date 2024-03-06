@@ -1,6 +1,6 @@
 import React from 'react'
 import { BackGround, BodyContainer, ChannelInfo, ChatContainer, ChatItems, ChatOptions, ChatPanel, Container, ImageProfile, Message, Messages, MyMessage, OtherMessage, OtherUser, Row, SideBar, TextBox, TitleChatContainer, UserName, UsermessageContainer, UsermessageContainerLeft, UsermessageContainerRight } from './chatElements'
-import ProfileImg from '../assets/profissao-programador.jpg';
+import ProfileImg from '../../assets/profissao-programador.jpg';
 
 const rooms = [
   "general",

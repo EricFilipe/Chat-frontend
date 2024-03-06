@@ -2,8 +2,8 @@ import './App.css';
 import socket from 'socket.io-client';
 import { produce } from 'immer';
 import { useEffect, useState, useRef } from 'react';
-import Chat from './components/Chat';
-import Form from './components/UsernameForm';
+import Chat from './components/ChatComponent/Chat';
+import Form from './components/UserForm/UsernameForm';
 
 const initialMessagesState = {
   general: [],
