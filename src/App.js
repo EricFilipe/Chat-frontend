@@ -6,10 +6,10 @@ import Chat from './components/ChatComponent/Chat';
 import Form from './components/UserForm/UsernameForm';
 
 const initialMessagesState = {
-  general: [],
-  random: [],
-  jokes: [],
-  javascript: []
+  Geral: [],
+  Python: [],
+  PHP: [],
+  Javascript: []
 }
 
 const io = socket('https://chat-backend-bqdx.onrender.com');

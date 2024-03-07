@@ -1,29 +1,31 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   height: 100vh;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #e2e1de;
-`;
-
-export const BackGround = styled.div`
- background-color: #00a884;
-  height: 20%;
-  width: 100%;
-  position: absolute;
-  top: 0;
+  background-color: #131324;
 `;
 
 export const ChatContainer = styled.div`
-  width: 95%;
+  height: 85vh;
+  width: 85vw;
   max-width: 1800px;
-  height: 95%;
-  background-color: #fff;
+  background-color: #00000076;
   position: absolute;
-  display: flex;
+  display: grid;
+  grid-template-columns: 25% 75%;
+
+  @media screen and (min-width: 768px) and (max-width: 1080px) {
+    grid-template-columns: 35% 65%;
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 480px) {
+    grid-template-columns: 45% 55%;
+  }
 `;
 
 export const UsermessageContainer = styled.div`
@@ -48,9 +50,13 @@ export const UserName = styled.div`
 `;
 
 export const SideBar = styled.div`
-  width: 30%;
+  width: 100%;
   height: 100%;
-  border-right: 1px solid #e6e6e6;
+  background-color: #080420;
+
+  h3{
+    color: #fff;
+  }
 `;
 
 export const ChatOptions = styled.div`
@@ -62,15 +68,27 @@ export const ChatOptions = styled.div`
 export const ChatItems = styled.div`
  box-sizing: border-box;
   padding: 10px;
-  border-top: 1px solid #f0f2f5;
-  border-bottom: 1px solid #f0f2f5;
   display: flex;
   align-items: center;
   cursor: pointer;
+  background-color: #ffffff39;
+  margin: 10px 10px;
+  overflow: auto;
+
+  &::-webkit-scrollbar{
+  width: 6px;
+  height: 20px;
+  &-thumb {
+    background-color: #ffffff39;
+    border-radius: 2px;
+    width: 1px;
+  }
+  }
+
 `;
 
 export const TitleChatContainer = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   margin-left: 15px;
 `;
@@ -89,10 +107,19 @@ export const ChatPanel = styled.div`
 `;
 
 export const BodyContainer = styled.div`
-    width: 100%;
-    height: 75%;
-    overflow: scroll;
-    border-bottom: 1px solid black;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+
+  &::-webkit-scrollbar{
+  width: 6px;
+  height: 20px;
+  &-thumb {
+    background-color: #ffffff39;
+    border-radius: 2px;
+    width: 1px;
+  }
+  }
 `;
 
 export const TextBox = styled.textarea`
@@ -109,6 +136,8 @@ export const ChannelInfo = styled.div`
 export const Row = styled.div`
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
+    color: #fff;
 `;
 
 export const Messages = styled.div`
@@ -117,4 +146,22 @@ export const Messages = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background-color: #bfbfbf;
+`;
+
+export const JoinContainer = styled.div`
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+
+ button{
+  background-color: #997af0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 12px;
+  }
 `;

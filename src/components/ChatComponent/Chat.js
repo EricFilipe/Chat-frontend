@@ -1,12 +1,13 @@
 import React from 'react'
-import { BackGround, BodyContainer, ChannelInfo, ChatContainer, ChatItems, ChatOptions, ChatPanel, Container, ImageProfile, Message, Messages, MyMessage, OtherMessage, OtherUser, Row, SideBar, TextBox, TitleChatContainer, UserName, UsermessageContainer, UsermessageContainerLeft, UsermessageContainerRight } from './chatElements'
+import { BackGround, BodyContainer, ChannelInfo, ChatContainer, ChatItems, ChatOptions, ChatPanel, Container, ImageProfile, JoinContainer, Message, Messages, MyMessage, OtherMessage, OtherUser, Row, SideBar, TextBox, TitleChatContainer, UserName, UsermessageContainer, UsermessageContainerLeft, UsermessageContainerRight } from './chatElements'
 import ProfileImg from '../../assets/profissao-programador.jpg';
+import Robot from '../../assets/robot.png';
 
 const rooms = [
-  "general",
-  "random",
-  "jokes",
-  "javascript"
+  "Geral",
+  "Python",
+  "PHP",
+  "Javascript"
 ]
 
 const Chat = (props) => {
@@ -36,9 +37,10 @@ const Chat = (props) => {
     if(user.id === props.yourId) {
       return (
         <ChatItems>
+          <ImageProfile src={ProfileImg}/>
           <TitleChatContainer>
             <Row key={user.id}>
-            You: {user.username}
+            {user.username}
             </Row>
           </TitleChatContainer>
         </ChatItems>
@@ -98,7 +100,10 @@ const Chat = (props) => {
     );
   } else {
     body = (
-      <button onClick={() => props.joinRoom(props.currentChat.chatName)}>Join {props.currentChat.chatName}</button>
+      <JoinContainer>
+        <img src={Robot} alt='robot'/>
+        <button onClick={() => props.joinRoom(props.currentChat.chatName)}>Join {props.currentChat.chatName}</button>
+      </JoinContainer>
     );
   }
   
@@ -111,16 +116,11 @@ const Chat = (props) => {
 
   return (
     <Container>
-      <BackGround></BackGround>
       <ChatContainer>
         <SideBar>
-          <ChatOptions>
-            <h3>Channels</h3>
-          </ChatOptions>
+          <h3>GRUPOS</h3>
           {rooms.map(renderRooms)}
-          <ChatOptions>
-            <h3>All Users</h3>
-          </ChatOptions>
+          <h3>USUÁRIOS</h3>
           {props.allUsers.map(renderUser)}
         </SideBar>
         <ChatPanel>
