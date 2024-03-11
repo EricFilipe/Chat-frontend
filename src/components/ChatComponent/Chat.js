@@ -2,6 +2,8 @@ import React from 'react'
 import { BackGround, BodyContainer, ChannelInfo, ChatContainer, ChatItems, ChatOptions, ChatPanel, Container, ImageProfile, JoinContainer, Message, Messages, MyMessage, OtherMessage, OtherUser, Row, SideBar, TextBox, TitleChatContainer, UserName, UsermessageContainer, UsermessageContainerLeft, UsermessageContainerRight } from './chatElements'
 import ProfileImg from '../../assets/profissao-programador.jpg';
 import Robot from '../../assets/robot.png';
+import { IoMdSend } from 'react-icons/io';
+import { BsEmojiSmileFill } from 'react-icons/bs';
 
 const rooms = [
   "Geral",
@@ -22,10 +24,10 @@ const Chat = (props) => {
       receiverId: '',
     }
     return (
-      <ChatItems>
+      <ChatItems  onClick={() => props.toggleChat(currentChat)}>
         <ImageProfile src={ProfileImg}/>
         <TitleChatContainer>
-          <Row onClick={() => props.toggleChat(currentChat)} key={room}>
+          <Row key={room}>
             {room}
           </Row>
         </TitleChatContainer>
@@ -75,6 +77,7 @@ const Chat = (props) => {
               {message.sender}
             </UserName>
             {message.content}
+            {message.time}
           </Message>
         </UsermessageContainer>
         :
@@ -94,9 +97,17 @@ const Chat = (props) => {
   let body;
   if(!props.currentChat.isChannel || props.connectedRooms.includes(props.currentChat.chatName)) {
     body = (
-      <Messages>
+      <BodyContainer>
+        <div className='chat-header'>
+          <div className='user-details'>
+            <ImageProfile src={ProfileImg}/>
+            <div className='chat-name'>
+              <h3>{props.currentChat.chatName}</h3>
+            </div>
+          </div>
+        </div>
         {props.messages.map(renderMessages)}
-      </Messages>
+      </BodyContainer>
     );
   } else {
     body = (
@@ -124,18 +135,24 @@ const Chat = (props) => {
           {props.allUsers.map(renderUser)}
         </SideBar>
         <ChatPanel>
-          <ChannelInfo>
+          {/* <ChannelInfo>
             {props.currentChat.chatName}
-          </ChannelInfo>
+          </ChannelInfo> */}
           <BodyContainer>
             {body}
           </BodyContainer>
-          <TextBox 
+          <TextBox> 
+            <BsEmojiSmileFill />
+            <input
             value={props.message}
             onChange={props.handleMessageChange}
             onKeyPress={handleKeyPress}
             placeholder='say something...'
-          />
+            />
+            <button onClick={() => props.sendMessage()}>
+              <IoMdSend />
+            </button>
+          </TextBox>
         </ChatPanel>
       </ChatContainer>
     </Container>

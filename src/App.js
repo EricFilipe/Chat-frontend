@@ -17,8 +17,8 @@ const io = socket('https://chat-backend-bqdx.onrender.com');
 function App() {
   const [username, setUsername] = useState('');
   const [connected, setConnected] = useState(false);
-  const [currentChat, setCurrentChat] = useState({ isChannel: true, chatName: 'general', receiverId: '' });
-  const [connectedRooms, setConnectedRooms] = useState(['general']);
+  const [currentChat, setCurrentChat] = useState({ isChannel: true, chatName: 'Geral', receiverId: '' });
+  const [connectedRooms, setConnectedRooms] = useState(['Geral']);
   const [allUsers, setAllUsers] = useState([]);
   const [messages, setMessages] = useState(initialMessagesState);
   const [message, setMessage] = useState('');
@@ -85,7 +85,7 @@ function App() {
     setConnected(true);
     socketRef.current = io.connect("/");
     socketRef.current.emit("join-server", username);
-    socketRef.current.emit("join-room", 'general', (messages) => roomJoinCallback(messages, 'general'));
+    socketRef.current.emit("join-room", 'Geral', (messages) => roomJoinCallback(messages, 'general'));
     socketRef.current.on("new-user", allUsers => {
       setAllUsers(allUsers);
     });

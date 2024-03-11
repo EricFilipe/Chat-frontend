@@ -51,6 +51,7 @@ export const FormContainer = styled.div`
             font-weight: bold;
             color: #fff;
             font-size: 12px;
+            cursor: pointer;
         }
     }
 `;

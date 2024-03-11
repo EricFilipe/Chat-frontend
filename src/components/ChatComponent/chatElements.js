@@ -100,10 +100,11 @@ width: 60px;
 `;
 
 export const ChatPanel = styled.div`
-    height: 100;
-    width: 85%;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 `;
 
 export const BodyContainer = styled.div`
@@ -120,17 +121,65 @@ export const BodyContainer = styled.div`
     width: 1px;
   }
   }
+
+  .chat-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    position: fixed;
+
+    .user-details{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+  }
 `;
 
-export const TextBox = styled.textarea`
-    height: 15%;
-    width: 100%;
+export const TextBox = styled.div`
+ width: 100%;
+ height: 5%;
+ border-radius: 20px;
+ display: flex;
+ align-items: center;
+ gap: 20px;
+ background-color: #ffffff34;
+
+ input{
+  width: 90%;
+  height: 60%;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding-left: 16px;
+  font-size: 16px;
+ }
+
+ button{
+  padding: 7px 26px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9a86f3;
+  border: none;
+  cursor: pointer;
+
+  svg{
+    font-size: 18px;
+    color: #fff;
+  }
+ }
 `;
 
 export const ChannelInfo = styled.div`
     height: 10%;
     width: 100%;
     border-bottom: 1px solid black;
+    color: #fff;
 `;
 
 export const Row = styled.div`
@@ -163,5 +212,6 @@ export const JoinContainer = styled.div`
   font-weight: bold;
   color: #fff;
   font-size: 12px;
+  cursor: pointer;
   }
 `;
