@@ -13,9 +13,9 @@ const rooms = [
 ]
 
 const Chat = (props) => {
-  const [userRight, setUserRight] = [true]
-  const [myMessage, setMyMessage] = [true]
-  const [senderName, setSenderName] = [true]
+  const [userRight, setUserRight] = [true];
+  const [myMessage, setMyMessage] = [true];
+  const [senderName, setSenderName] = [true];
 
   function renderRooms(room) {
     const currentChat = {
@@ -23,8 +23,9 @@ const Chat = (props) => {
       isChannel: true,
       receiverId: '',
     }
-    return (
-      <ChatItems  onClick={() => props.toggleChat(currentChat)}>
+    if(props.activateChat === false) {
+      return (
+      <ChatItems onClick={() => props.toggleChat(currentChat)}>
         <ImageProfile src={ProfileImg}/>
         <TitleChatContainer>
           <Row key={room}>
@@ -32,7 +33,13 @@ const Chat = (props) => {
           </Row>
         </TitleChatContainer>
       </ChatItems>
-    )
+      )
+    } else {
+      return (
+        <BodyContainer></BodyContainer>
+      )
+    }
+    
   }
   
   function renderUser(user) {
@@ -54,7 +61,8 @@ const Chat = (props) => {
       receiverId: user.id,
     }
     return (
-      <ChatItems>
+      <ChatItems activateChat={props.activateChat}>
+        <ImageProfile src={ProfileImg}/>
         <TitleChatContainer>
           <Row onClick={() => {
           props.toggleChat(currentChat);
@@ -98,14 +106,6 @@ const Chat = (props) => {
   if(!props.currentChat.isChannel || props.connectedRooms.includes(props.currentChat.chatName)) {
     body = (
       <BodyContainer>
-        <div className='chat-header'>
-          <div className='user-details'>
-            <ImageProfile src={ProfileImg}/>
-            <div className='chat-name'>
-              <h3>{props.currentChat.chatName}</h3>
-            </div>
-          </div>
-        </div>
         {props.messages.map(renderMessages)}
       </BodyContainer>
     );
@@ -128,21 +128,27 @@ const Chat = (props) => {
   return (
     <Container>
       <ChatContainer>
-        <SideBar>
+        <SideBar activateChat={props.activateChat}>
           <h3>GRUPOS</h3>
           {rooms.map(renderRooms)}
           <h3>USUÁRIOS</h3>
           {props.allUsers.map(renderUser)}
         </SideBar>
-        <ChatPanel>
-          {/* <ChannelInfo>
-            {props.currentChat.chatName}
-          </ChannelInfo> */}
+        <ChatPanel activateChat={props.activateChat}>
+          <ChannelInfo>
+            <div className='chat-header'>
+              <div className='user-details'>
+                <ImageProfile src={ProfileImg}/>
+                <div className='chat-name'>
+                  <h3>{props.currentChat.chatName}</h3>
+                </div>
+              </div>
+            </div>
+          </ChannelInfo>
           <BodyContainer>
             {body}
           </BodyContainer>
           <TextBox> 
-            <BsEmojiSmileFill />
             <input
             value={props.message}
             onChange={props.handleMessageChange}

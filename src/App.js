@@ -23,6 +23,7 @@ function App() {
   const [messages, setMessages] = useState(initialMessagesState);
   const [message, setMessage] = useState('');
   const socketRef = useRef();
+  const [activateChat, setActivateChat] = useState(false);
 
   function handleMessageChange(e) {
     setMessage(e.target.value);
@@ -75,6 +76,7 @@ function App() {
       setMessages(newMessages);
     }
     setCurrentChat(currentChat);
+    setActivateChat(true);
   }
 
   function handleChange(e) {
@@ -118,6 +120,7 @@ function App() {
         toggleChat={toggleChat}
         messages={messages[currentChat.chatName]}
         username={username}
+        activateChat={activateChat}
       />
     );
   } else {

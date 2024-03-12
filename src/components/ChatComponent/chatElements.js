@@ -24,7 +24,8 @@ export const ChatContainer = styled.div`
   }
 
   @media screen and (min-width: 360px) and (max-width: 480px) {
-    grid-template-columns: 45% 55%;
+    display: ${({activateChat}) => activateChat? 'grid' : 'flex'};
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -56,6 +57,12 @@ export const SideBar = styled.div`
 
   h3{
     color: #fff;
+
+    @media screen and (max-width: 480px) {
+      display: ${({activateChat}) => activateChat? 'none' : 'flex'};
+      justify-content: flex-start;
+      margin-left: 20px;
+    }
   }
 `;
 
@@ -66,7 +73,7 @@ export const ChatOptions = styled.div`
 `;
 
 export const ChatItems = styled.div`
- box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -84,7 +91,8 @@ export const ChatItems = styled.div`
     width: 1px;
   }
   }
-
+ 
+  
 `;
 
 export const TitleChatContainer = styled.div`
@@ -94,17 +102,22 @@ export const TitleChatContainer = styled.div`
 `;
 
 export const ImageProfile = styled.img`
-width: 60px;
+  width: 60px;
   height: auto;
   border-radius: 50%;
 `;
 
 export const ChatPanel = styled.div`
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media (max-width: 480px){
+    display: ${({activateChat}) => activateChat? 'flex' : 'none'};
+    width: 5000%;
+  }
 `;
 
 export const BodyContainer = styled.div`
@@ -122,19 +135,8 @@ export const BodyContainer = styled.div`
   }
   }
 
-  .chat-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 24px;
-    position: fixed;
-
-    .user-details{
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: #fff;
-    }
+  @media screen and (max-width: 480px) {
+    
   }
 `;
 
@@ -176,10 +178,23 @@ export const TextBox = styled.div`
 `;
 
 export const ChannelInfo = styled.div`
-    height: 10%;
-    width: 100%;
-    border-bottom: 1px solid black;
-    color: #fff;
+  height: 10%;
+  width: 100%;
+
+  .chat-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    position: fixed;
+
+    .user-details{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+  }
 `;
 
 export const Row = styled.div`
