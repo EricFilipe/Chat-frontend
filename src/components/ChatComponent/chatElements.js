@@ -25,6 +25,8 @@ export const ChatContainer = styled.div`
 
   @media screen and (min-width: 360px) and (max-width: 480px) {
     display: flex;
+    height: 100vh;
+    width: 100vw;
   }
 `;
 
