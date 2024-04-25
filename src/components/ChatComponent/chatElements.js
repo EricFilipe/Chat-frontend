@@ -24,8 +24,7 @@ export const ChatContainer = styled.div`
   }
 
   @media screen and (min-width: 360px) and (max-width: 480px) {
-    display: ${({activateChat}) => activateChat? 'grid' : 'flex'};
-    grid-template-columns: 1fr;
+    display: flex;
   }
 `;
 
@@ -54,15 +53,24 @@ export const SideBar = styled.div`
   width: 100%;
   height: 100%;
   background-color: #080420;
+  overflow: auto;
+
+  &::-webkit-scrollbar{
+  width: 6px;
+  height: 20px;
+  &-thumb {
+    background-color: #ffffff39;
+    border-radius: 2px;
+    width: 1px;
+  }
+  }
 
   h3{
     color: #fff;
+  }
 
-    @media screen and (max-width: 480px) {
-      display: ${({activateChat}) => activateChat? 'none' : 'flex'};
-      justify-content: flex-start;
-      margin-left: 20px;
-    }
+  @media screen and (max-width: 480px) {
+    display: ${({activateChat}) => activateChat? 'none' : 'block'};
   }
 `;
 
@@ -80,19 +88,6 @@ export const ChatItems = styled.div`
   cursor: pointer;
   background-color: #ffffff39;
   margin: 10px 10px;
-  overflow: auto;
-
-  &::-webkit-scrollbar{
-  width: 6px;
-  height: 20px;
-  &-thumb {
-    background-color: #ffffff39;
-    border-radius: 2px;
-    width: 1px;
-  }
-  }
- 
-  
 `;
 
 export const TitleChatContainer = styled.div`
@@ -112,18 +107,17 @@ export const ChatPanel = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
 
   @media (max-width: 480px){
     display: ${({activateChat}) => activateChat? 'flex' : 'none'};
-    width: 5000%;
   }
 `;
 
 export const BodyContainer = styled.div`
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
 
   &::-webkit-scrollbar{
   width: 6px;
@@ -135,9 +129,7 @@ export const BodyContainer = styled.div`
   }
   }
 
-  @media screen and (max-width: 480px) {
-    
-  }
+
 `;
 
 export const TextBox = styled.div`
@@ -186,13 +178,23 @@ export const ChannelInfo = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 8px 24px;
-    position: fixed;
+    
 
     .user-details{
       display: flex;
       align-items: center;
       gap: 16px;
       color: #fff;
+    }
+
+    .back-arrow{
+      color: #fff;
+      cursor: pointer;
+      
+
+      @media screen and (max-width: 480px){
+        display: flex;
+      }
     }
   }
 `;
@@ -228,5 +230,12 @@ export const JoinContainer = styled.div`
   color: #fff;
   font-size: 12px;
   cursor: pointer;
+  }
+
+  @media screen and (max-width: 480px) {
+    img{
+      width: 300px;
+      margin-top: 70px;
+    }
   }
 `;

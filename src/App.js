@@ -121,6 +121,7 @@ function App() {
         messages={messages[currentChat.chatName]}
         username={username}
         activateChat={activateChat}
+        setActivateChat={setActivateChat}
       />
     );
   } else {

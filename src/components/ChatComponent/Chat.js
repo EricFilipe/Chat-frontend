@@ -3,7 +3,7 @@ import { BackGround, BodyContainer, ChannelInfo, ChatContainer, ChatItems, ChatO
 import ProfileImg from '../../assets/profissao-programador.jpg';
 import Robot from '../../assets/robot.png';
 import { IoMdSend } from 'react-icons/io';
-import { BsEmojiSmileFill } from 'react-icons/bs';
+import { FaArrowLeft } from "react-icons/fa";
 
 const rooms = [
   "Geral",
@@ -23,23 +23,17 @@ const Chat = (props) => {
       isChannel: true,
       receiverId: '',
     }
-    if(props.activateChat === false) {
-      return (
-      <ChatItems onClick={() => props.toggleChat(currentChat)}>
-        <ImageProfile src={ProfileImg}/>
-        <TitleChatContainer>
-          <Row key={room}>
-            {room}
-          </Row>
-        </TitleChatContainer>
-      </ChatItems>
-      )
-    } else {
-      return (
-        <BodyContainer></BodyContainer>
-      )
-    }
-    
+
+    return (
+    <ChatItems onClick={() => props.toggleChat(currentChat)}>
+      <ImageProfile src={ProfileImg}/>
+      <TitleChatContainer>
+        <Row key={room}>
+          {room}
+        </Row>
+      </TitleChatContainer>
+    </ChatItems>
+    )
   }
   
   function renderUser(user) {
@@ -113,7 +107,7 @@ const Chat = (props) => {
     body = (
       <JoinContainer>
         <img src={Robot} alt='robot'/>
-        <button onClick={() => props.joinRoom(props.currentChat.chatName)}>Join {props.currentChat.chatName}</button>
+        <button onClick={() => props.joinRoom(props.currentChat.chatName)}>Entrar no grupo</button>
       </JoinContainer>
     );
   }
@@ -143,6 +137,7 @@ const Chat = (props) => {
                   <h3>{props.currentChat.chatName}</h3>
                 </div>
               </div>
+              <FaArrowLeft onClick={() => props.setActivateChat(false)} className='back-arrow'/>
             </div>
           </ChannelInfo>
           <BodyContainer>
