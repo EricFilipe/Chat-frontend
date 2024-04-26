@@ -25,8 +25,8 @@ export const ChatContainer = styled.div`
 
   @media screen and (min-width: 360px) and (max-width: 480px) {
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    height: 90vh;
+    width: 90vw;
   }
 `;
 
@@ -192,7 +192,7 @@ export const ChannelInfo = styled.div`
     .back-arrow{
       color: #fff;
       cursor: pointer;
-      
+      display: none;
 
       @media screen and (max-width: 480px){
         display: flex;
